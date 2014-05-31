@@ -35,7 +35,7 @@ Tudou.prototype.auth = function(code, callback) {
 };
 
 Tudou.prototype.getClient = function(access_token){
-	var client = new Tudou.Client(access_token, this.app_key);
+	var client = new Tudou.Client(access_token, this.config.app_key);
 	
 	return client;
 };
