@@ -1,0 +1,20 @@
+{
+  "name": "tudou",
+  "version": "0.0.1",
+  "description": "client of tudou.com",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shen2/node-tudou.git"
+  },
+  "author": "shen2",
+  "license": "Apache, Version 2.0",
+  "bugs": {
+    "url": "https://github.com/shen2/node-tudou/issues"
+  },
+  "dependencies": {
+    "request": "*",
+    "underscore": "*"
+  }
+}
