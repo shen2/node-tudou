@@ -27,8 +27,8 @@ Tudou.prototype.auth = function(code, callback) {
 	        if (err)
 	        	return callback(err);
 	        
-	        if (response.body.code !== 0)
-	        	return callback(new Error(response.body.errorMessage));
+	        if (response.body.error_code)
+	        	return callback(new Error(response.body.errorMessage), response.body);
 	        
 	        return callback(err, response.body);
 	    });
