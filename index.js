@@ -2,7 +2,7 @@ var querystring = require('querystring'),
 	_ = require('underscore'),
 	request = require('request');
 
-var Tudou = function(config) {
+var SDK = function(config) {
     if (!config) return false;
     this.config = config;
 };
@@ -10,7 +10,7 @@ var Tudou = function(config) {
 /**
  * 使用code换取access_token与用户ID
  */
-Tudou.prototype.auth = function(code, callback) {
+SDK.prototype.auth = function(code, callback) {
     if (!code)
     	return callback(new Error('code required'));
     if (typeof(code) !== 'string')
@@ -34,22 +34,22 @@ Tudou.prototype.auth = function(code, callback) {
 	    });
 };
 
-Tudou.prototype.getClient = function(access_token){
-	var client = new Tudou.Client(access_token, this.config.app_key);
+SDK.prototype.getClient = function(access_token){
+	var client = new SDK.Client(access_token, this.config.app_key);
 	
 	return client;
 };
 
 /**
- * 构造一个Tudou.Client实例
- * Tudou.Client用于在拥有access token的情况下访问土豆接口
+ * 构造一个SDK.Client实例
+ * SDK.Client用于在拥有access token的情况下访问API接口
  */
-Tudou.Client = function(access_token, app_key){
+SDK.Client = function(access_token, app_key){
 	this.access_token = access_token;
 	this.app_key = app_key;
 };
 
-Tudou.Client.prototype.get = function(path, data, callback){
+SDK.Client.prototype.get = function(path, data, callback){
 	var url = 'https://api.tudou.com/v6/' + path;
 		params = _.extend({
 			app_key		: this.app_key,
@@ -62,7 +62,7 @@ Tudou.Client.prototype.get = function(path, data, callback){
 	request.get(url, {json : true}, callback);
 };
 
-Tudou.Client.prototype.post = function(path, data, callback){
+SDK.Client.prototype.post = function(path, data, callback){
 	var url = 'https://api.tudou.com/v6/' + path,
 		params = _.extend({
 			app_key		: this.app_key,
@@ -73,4 +73,4 @@ Tudou.Client.prototype.post = function(path, data, callback){
 	request.post(url, {json : true, form:params}, callback);
 };
 
-module.exports = Tudou;
+module.exports = SDK;
