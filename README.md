@@ -5,7 +5,7 @@ node-tudou ![](https://badge.fury.io/js/tudou.png)
 
 ## 安装
 ````
-$ npm install youku
+$ npm install tudou
 ````
 
 ## 使用
